@@ -6,11 +6,13 @@ from dotenv import load_dotenv
 from flask import Flask
 from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
 
 from .config import config as app_config
 
 celery = Celery(__name__)
 db = SQLAlchemy()
+migrate = Migrate()
 
 
 def create_app():
@@ -24,6 +26,7 @@ def create_app():
 
     CORS(app, resources={r'/api/*': {'origins': '*'}})
     db.init_app(app)
+    migrate.init_app(app, db)
     celery.config_from_object(app.config, force=True)
     # celery is not able to pick result_backend and hence using update
     celery.conf.update(result_backend=app.config['RESULT_BACKEND'])

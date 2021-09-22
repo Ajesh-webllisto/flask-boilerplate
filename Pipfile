@@ -16,6 +16,9 @@ flask-cors = "*"
 python-dotenv = "*"
 marshmallow = "*"
 webargs = "*"
+flask-migrate = "*"
+Flask-SQLAlchemy = "*"
+
 
 [requires]
 python_version = "3.6"

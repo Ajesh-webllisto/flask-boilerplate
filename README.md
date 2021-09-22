@@ -27,6 +27,10 @@ $ pipenv install -d --python 3.6
 - There are 3 configurations `development`, `staging` and `production` in `config.py`. Default is `development`
 - Create a `.env` file from `.env.example` and set appropriate environment variables before running the project
 - Create a folder named "log" and create 2 files in it named as "celery.log" and "info.log".
+- Run command "flask db init" to initialize database.
+- Run command "flask db migrate" to create migrations.
+- Run command "flask db upgrade" to make changes to database.
+- Run command "flask db stamp head" if, in case upgrade fails and the again run upgrade command.
 
 ### Running app
 
