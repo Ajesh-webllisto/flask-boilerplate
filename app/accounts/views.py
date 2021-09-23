@@ -7,6 +7,10 @@ import hashlib
 accounts = Blueprint('accounts', __name__)
 logger = LocalProxy(lambda: current_app.logger)
 
+@accounts.before_request
+def before_request_func():
+    current_app.logger.name = 'accounts'
+
 @accounts.route('/register', methods=['POST'])
 def register():
     db.session.add(
